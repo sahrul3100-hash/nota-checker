@@ -1,0 +1,14 @@
+node_modules
+.env
+backend/.env
+frontend/.env
+
+# SQLite dev db (jangan dipush)
+backend/prisma/dev.db
+backend/prisma/dev.db-journal
+backend/dev.db
+backend/dev.db-journal
+
+# build
+dist
+*.log
