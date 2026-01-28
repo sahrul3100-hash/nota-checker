@@ -1,4 +1,10 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import axios from "axios";
+
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || "";
 
 axios.interceptors.request.use((config) => {
@@ -12,7 +18,6 @@ axios.interceptors.response.use(
   (err) => {
     if (err?.response?.status === 401) {
       localStorage.removeItem("token");
-      // hindari loop kalau lagi di /login
       if (window.location.pathname !== "/login") {
         window.location.href = "/login";
       }
@@ -20,11 +25,6 @@ axios.interceptors.response.use(
     return Promise.reject(err);
   }
 );
-
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
